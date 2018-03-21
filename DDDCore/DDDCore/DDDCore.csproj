@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DDDCore.Domain\DDDCore.Domain.csproj">
+      <Project>{220AB283-CBD3-457C-B224-F58378DF75D9}</Project>
+      <Name>DDDCore.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

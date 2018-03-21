@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DDDCore.Domain\DDDCore.Domain.csproj">
+      <Project>{220AB283-CBD3-457C-B224-F58378DF75D9}</Project>
+      <Name>DDDCore.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DDDCore\DDDCore.csproj">
+      <Project>{B98FB43F-07C5-47EB-B492-57532A0ADD62}</Project>
+      <Name>DDDCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
