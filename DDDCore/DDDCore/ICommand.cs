@@ -5,7 +5,7 @@ namespace DDDCore
 {
     internal interface ICommand<out T> where T : IAggregateRoot
     {
-        T Model { get; }
+        T AggregateRoot { get; }
         void Handle();
         Task HandleAsync();
     }
