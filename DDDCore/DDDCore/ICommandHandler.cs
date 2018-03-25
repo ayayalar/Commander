@@ -3,9 +3,10 @@ using DDDCore.Domain;
 
 namespace DDDCore
 {
-    public interface ICommandHandler<T> where T: IAggregateRoot
+    public interface ICommandHandler<TContext, TAggregateRoot> where TContext : BoundedContext<TAggregateRoot>, new()
+        where TAggregateRoot : IAggregateRoot
     {
-        void Handle(params Command<T>[] commands);
-        Task HandleAsync(params CommandAsync<T>[] commands);
+        void Handle(params Command<TContext, TAggregateRoot>[] commands);
+        Task HandleAsync(params CommandAsync<TContext, TAggregateRoot>[] commands);
     }
 }

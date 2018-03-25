@@ -1,6 +1,6 @@
 ﻿namespace DDDCore
 {
-    public enum NestedCommandOrder
+    public enum CommandOrder
     {
         First,
         Last

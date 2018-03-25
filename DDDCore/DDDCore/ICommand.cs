@@ -1,12 +1,12 @@
-﻿using System.Threading.Tasks;
-using DDDCore.Domain;
+﻿using DDDCore.Domain;
 
 namespace DDDCore
 {
-    internal interface ICommand<out T> where T : IAggregateRoot
+    internal interface ICommand<out TContext, out TAggregateRoot> where TContext : IBoundedContext<TAggregateRoot>
+        where TAggregateRoot : IAggregateRoot
     {
-        T AggregateRoot { get; }
+        TContext Context { get; }
+        void Init();
         void Handle();
-        Task HandleAsync();
     }
 }
