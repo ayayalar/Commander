@@ -10,14 +10,13 @@ namespace Commander.Test
         [Fact]
         public void ShouldExecuteCommand()
         {
-            var request = new Request() {For = nameof(TestCommand1)};
-            var command = new TestCommand1();
+            var request = new Request { For = nameof(TestCommand1) };
+            var command = new TestCommand1(new Repository());
             var commander = new Commander<Request, Model>(request);
             var model = commander.Execute(command);
 
             model.Should().NotBeNull();
             model.For.Should().Be(request.For);
         }
-
     }
 }

@@ -6,7 +6,7 @@ namespace Commander.Test.Commands
     {
         private readonly Repository _repo;
 
-        public TestCommand1(Repository repo = null)
+        public TestCommand1(Repository repo)
         {
             _repo = repo;
         }
