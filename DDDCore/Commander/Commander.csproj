@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commander.Domain\Commander.Domain.csproj" />
+    <ProjectReference Include="..\DDDCore.Domain\Commander.Domain.csproj" />
+  </ItemGroup>
+</Project>

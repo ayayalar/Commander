@@ -1,4 +1,4 @@
-﻿namespace DDDCore.Domain
+﻿namespace Commander.Domain
 {
     public interface IAggregateRoot
     {
