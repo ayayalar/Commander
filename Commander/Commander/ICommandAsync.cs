@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using Commander.Domain;
+using AggregateRoot = Commander.Common.AggregateRoot;
 
 namespace Commander
 {
-    internal interface ICommandAsync<out TRequest, TModel> where TModel : IAggregateRoot
+    internal interface ICommandAsync<out TRequest, TModel> where TModel : AggregateRoot
     {
         TRequest Request { get; }
         Task InitAsync();

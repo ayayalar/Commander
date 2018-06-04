@@ -1,4 +1,4 @@
-﻿using Commander.Domain;
+﻿using IEvent = Commander.Common.IEvent;
 
 namespace Commander
 {

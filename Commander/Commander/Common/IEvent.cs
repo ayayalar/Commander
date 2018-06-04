@@ -1,4 +1,4 @@
-﻿namespace Commander.Domain
+﻿namespace Commander.Common
 {
     public interface IEvent<out T> : IEvent
     {

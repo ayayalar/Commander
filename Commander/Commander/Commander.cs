@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Commander.Domain;
+using AggregateRoot = Commander.Common.AggregateRoot;
+using IEvent = Commander.Common.IEvent;
 
 namespace Commander
 {
     public class Commander<TRequest, TModel> : ICommandHandler<TRequest, TModel>
-        where TModel : IAggregateRoot
+        where TModel : AggregateRoot
     {
         private readonly TRequest _request;
         private TModel _model;

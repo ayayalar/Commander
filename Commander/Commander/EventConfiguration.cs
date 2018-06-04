@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Commander.Domain;
+using IEvent = Commander.Common.IEvent;
 
 namespace Commander
 {

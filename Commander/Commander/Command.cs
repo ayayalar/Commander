@@ -1,9 +1,9 @@
-﻿using Commander.Domain;
+﻿using AggregateRoot = Commander.Common.AggregateRoot;
 
 namespace Commander
 {
     public abstract class Command<TRequest, TModel> : CommandCommon<TRequest, TModel>,
-        ICommand<TRequest, TModel> where TModel : IAggregateRoot
+        ICommand<TRequest, TModel> where TModel : AggregateRoot
     {
         public virtual void Init()
         {
@@ -13,7 +13,7 @@ namespace Commander
     }
 
     public abstract class EventHandler<TRequest, TModel> : CommandCommon<TRequest, TModel>,
-        ICommand<TRequest, TModel> where TModel : IAggregateRoot
+        ICommand<TRequest, TModel> where TModel : AggregateRoot
     {
         public virtual void Init()
         {

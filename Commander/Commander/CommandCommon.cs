@@ -1,6 +1,5 @@
 ﻿using System;
-using Commander.Domain;
-
+using IEvent = Commander.Common.IEvent;
 
 namespace Commander
 {
@@ -14,7 +13,7 @@ namespace Commander
 
         public Func<bool> Guard { get; protected set; } = () => true;
 
-        public T GetEvent<T>() where T : class, IEvent, new()
+        public T GetEvent<T>() where T : class, IEvent
         {
             if (EventConfiguration.EventType == null)
             {
@@ -23,9 +22,9 @@ namespace Commander
             return EventConfiguration.Event as T;
         }
 
-        public void HandleEvent<T>() where T : class, IEvent, new() => EventConfiguration.EventType = typeof(T);
+        public void HandleEvent<T>() where T : class, IEvent => EventConfiguration.EventType = typeof(T);
 
-        public void RaiseEvent<T>(T @event) where T : class, IEvent, new()
+        public void RaiseEvent<TEvent>(TEvent @event) where TEvent : class, IEvent
         {
             EventConfiguration.Events.Add(new EventInfo(@event));
         }

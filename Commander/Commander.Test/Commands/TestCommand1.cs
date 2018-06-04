@@ -1,4 +1,5 @@
 using Commander.Test.Data;
+using Commander.Test.Events;
 
 namespace Commander.Test.Commands
 {
@@ -9,12 +10,13 @@ namespace Commander.Test.Commands
         public TestCommand1(Repository repo)
         {
             _repo = repo;
+            
         }
         public override Model Handle()
         {
             var model = _repo.GetModel();
-            model.For = Request.For;
-            model.CreatedAt = Request.CreatedAt;
+
+            RaiseEvent(new TestEvent(new Foo("Arif")));
 
             return model;
         }
