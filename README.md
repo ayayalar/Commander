@@ -33,12 +33,12 @@ class Product : AggregateRoot
 #### You can think of the Command as `Command<Input, Output>`
 
 ```csharp
-class BasicCommand : Command<RequestProductInformation, Product>
+class FetchProductInformation : Command<RequestProductInformation, Product>
 {
     private readonly Repo _repo;
-    public static BasicCommand Instance(Repo repo) => new BasicCommand(repo);
+    public static FetchProductInformation Instance(Repo repo) => new FetchProductInformation(repo);
 
-    public BasicCommand(Repo repo)
+    public FetchProductInformation(Repo repo)
     {
         _repo = repo;
     }
@@ -50,11 +50,11 @@ class BasicCommand : Command<RequestProductInformation, Product>
 }
 ```
 
-### Execute the command
+### Execute commander
 #### You can have multiple commands executed by the Commander.
 ```csharp
 var request = new RequestProductInformation("Test");
 
 var commander = new Commander<RequestProductInformation, Product>(request);
-var product = commander.Execute(BasicCommand.Instance(Repo.Instance()));
+var product = commander.Execute(FetchProductInformation.Instance(Repo.Instance()));
 ```
