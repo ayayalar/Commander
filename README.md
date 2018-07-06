@@ -1,9 +1,11 @@
 ## Commander
 
-Commander is a small library combines command pattern, with DDD practices. I think it is best explained by an example.
+Commander is a small library combines command pattern, with DDD practices. 
+
+##### I think it is best explained by an example.
 
 
-### Example
+### Example:
 
 #### `RequestProductInformation.cs` represents the request for the commander.
 ```csharp
