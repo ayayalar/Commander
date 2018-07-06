@@ -2,9 +2,9 @@
 
 namespace Commander.Test.Events
 {
-    internal class TestEvent : IEvent<Foo>
+    internal class EventModelUpdated : IEvent<Foo>
     {
-        public TestEvent(Foo foo)
+        public EventModelUpdated(Foo foo)
         {
             Data = foo;
         }

@@ -9,7 +9,7 @@ namespace Commander
 
         public TRequest Request { get; internal set; }
 
-        public TModel Model { get; internal set; }
+        public TModel Model { get; internal set; } = default(TModel);
 
         public Func<bool> Guard { get; protected set; } = () => true;
 

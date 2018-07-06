@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AggregateRoot = Commander.Common.AggregateRoot;
@@ -29,7 +30,7 @@ namespace Commander
 
         public async Task<TModel> ExecuteAsync(params CommandAsync<TRequest, TModel>[] commands)
         {
-            _asyncCommands = commands;
+            _asyncCommands = commands.ToList();
             await InitializeCommandsAsync(_asyncCommands);
             return await ExecuteAsync(_asyncCommands.Where(cmd => !cmd.EventConfiguration.IsEventHandler));
         }
@@ -38,9 +39,21 @@ namespace Commander
         {
             foreach (var command in commands)
             {
-                if (!command.Guard()) continue;
-
                 command.Model = _model;
+
+                SetCurrentEvent(command);
+
+                var tempModel = await command.HandleAsync();
+
+                if (_model == default(TModel) || _model == tempModel)
+                {
+                    _model = tempModel;
+                }
+                else
+                {
+                    throw new ApplicationException(ErrorMessages.OverrideWithNewInstance);
+                }
+
                 SetCurrentEvent(command);
 
                 _model = await command.HandleAsync();
@@ -50,8 +63,7 @@ namespace Commander
                     @event.IsExecuted = true;
                     _currentEvent = @event.Event;
 
-                    var eventHandlers = GetEventHandlers(command, @event);
-                    await ExecuteAsync(eventHandlers);
+                    await ExecuteAsync(GetEventHandlers(command, @event));
                 }
             }
 
@@ -65,9 +77,19 @@ namespace Commander
                 if (!command.Guard()) continue;
 
                 command.Model = _model;
+
                 SetCurrentEvent(command);
 
-                _model = command.Handle();
+                var tempModel = command.Handle();
+
+                if (_model == default(TModel) || _model == tempModel)
+                {
+                    _model = tempModel;
+                }                
+                else
+                {
+                    throw new ApplicationException(ErrorMessages.OverrideWithNewInstance);
+                }
 
                 foreach (var @event in command.EventConfiguration.GetEvents())
                 {
@@ -80,6 +102,7 @@ namespace Commander
 
             return _model;
         }
+
 
         private void InitializeCommands(IEnumerable<Command<TRequest, TModel>> commands)
         {

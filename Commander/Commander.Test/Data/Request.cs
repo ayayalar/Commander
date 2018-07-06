@@ -1,10 +1,11 @@
-using System;
-
 namespace Commander.Test.Data
 {
     public class Request
     {
-        public string For { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Today;
+        public Request(string name)
+        {
+            Name = name;
+        }
+        public string Name { get; }
     }
 }
