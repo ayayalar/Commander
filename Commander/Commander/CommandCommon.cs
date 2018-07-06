@@ -7,9 +7,9 @@ namespace Commander
     {
         internal readonly EventConfiguration EventConfiguration = new EventConfiguration();
 
-        public TRequest Request { get; internal set; }
+        public TRequest Request { get; private set; }
 
-        public TModel Model { get; internal set; } = default(TModel);
+        public TModel Model { get; private set; }
 
         public Func<bool> Guard { get; protected set; } = () => true;
 
@@ -17,7 +17,7 @@ namespace Commander
         {
             if (EventConfiguration.EventType == null)
             {
-                throw new ApplicationException("Event is not handled. Must call HandleEvent<T> in Init method first.");
+                throw new ApplicationException(ErrorMessages.HandleEventIsNotRegistered);
             }
             return EventConfiguration.Event as T;
         }
@@ -28,5 +28,8 @@ namespace Commander
         {
             EventConfiguration.Events.Add(new EventInfo(@event));
         }
+
+        internal void SetModelInstance(TModel model) => Model = model;
+        internal void SetRequest(TRequest request) => Request = request;
     }
 }

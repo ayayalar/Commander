@@ -11,14 +11,4 @@ namespace Commander
 
         public abstract TModel Handle();        
     }
-
-    public abstract class EventHandler<TRequest, TModel> : CommandCommon<TRequest, TModel>,
-        ICommand<TRequest, TModel> where TModel : AggregateRoot
-    {
-        public virtual void Init()
-        {
-        }
-
-        public abstract TModel Handle();
-    }
 }
