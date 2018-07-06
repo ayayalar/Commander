@@ -1,6 +1,6 @@
 ## Commander
 
-Commander is a small library combines command pattern, with DDD practices. I think it is best explained by an example.
+Commander is a small library combines command pattern, with DDD practices. 
 
 Download here [DotNetCommander](https://www.nuget.org/packages/DotNetCommander/)
 
