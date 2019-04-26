@@ -9,7 +9,7 @@ namespace Commander
         {
         }
 
-        public abstract TModel Handle();        
+        public virtual TModel Handle() => Model;
     }
 
     public abstract class EventHandler<TRequest, TModel> : CommandCommon<TRequest, TModel>,
@@ -19,6 +19,6 @@ namespace Commander
         {
         }
 
-        public abstract TModel Handle();
+        public virtual TModel Handle() => Model;
     }
 }

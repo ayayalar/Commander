@@ -9,7 +9,7 @@ namespace Commander.Test.Commands
 
         public override Task<Model> HandleAsync()
         {
-            return Task.FromResult(new Model("test"));
+            return Task.FromResult(new Model(1, "test"));
         }
     }
 }

@@ -3,6 +3,6 @@
     internal class Repo
     {
         public static Repo Instance() => new Repo();
-        public Model GetModel(string name) => new Model(name);
+        public Model GetModel(string name) => new Model(1, name);
     }
 }
