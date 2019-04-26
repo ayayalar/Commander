@@ -8,7 +8,7 @@ namespace Commander.Test.Commands
 
         public override Model Handle()
         {
-            return new Model("test");
+            return new Model(id: 2, "test");
         }
     }
 }

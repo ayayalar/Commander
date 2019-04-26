@@ -5,8 +5,9 @@ namespace Commander.Test.Data
 {
     public class Model : AggregateRoot
     {
-        public Model(string name)
+        public Model(long id, string name)
         {
+            Id = id;
             Name = name;
             CreatedAt = DateTime.Today;
         }
