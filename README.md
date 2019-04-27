@@ -1,4 +1,4 @@
-## Commander
+## DotNetCommander
 
 Commander is a small library combines command pattern, with DDD practices. 
 
